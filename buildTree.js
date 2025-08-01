@@ -43,8 +43,12 @@ function buildTree(absolutePath, args) {
         const direntPath = path.join(absPath, name);
         const isDirectory = dirent.isDirectory();
             
-        const fileExt = isDirectory ? null : path.extname(name);
-
+        let fileExt = isDirectory ? null : path.extname(name);
+        if (fileExt === "") {
+            // edge case for .env .gitignore files
+            file = name;
+        }
+            
         if (!args.all) {
             if (ignoreDirents.includes(name) || ignoreFileExts.includes(fileExt)) {
                 return;
