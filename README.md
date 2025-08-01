@@ -42,7 +42,7 @@ Running `dev-tree` in a sample project will produce output like this:
 Install the `dev-tree` tool globally using npm to use it from anywhere in your terminal.
 
 ```
-npm install -g dev-tree
+npm install -g @satpolo/dev-tree
 ```
 
 ---
