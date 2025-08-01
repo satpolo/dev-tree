@@ -1,7 +1,7 @@
 {
   "name": "@satpolo/dev-tree",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "cli.js",
   "bin": {
     "dev-tree": "./cli.js"
   },
@@ -9,7 +9,7 @@
     "start": "node cli.js"
   },
   "type": "commonjs",
-  "author": "",
+  "author": "satpolo",
   "license": "MIT",
   "description": "A simple, fast, and customizable command-line tool to generate a directory tree for any given path.",
   "dependencies": {
