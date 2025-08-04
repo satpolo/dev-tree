@@ -19,7 +19,7 @@ function buildTree(absolutePath, args) {
     const brightBlueBold = args?.output ? "" : "\x1b[94m" + "\x1b[1m";
     const brightMagentaBold = args?.output ? "" : "\x1b[95m" + "\x1b[1m";
 
-    let log = `/${brightMagentaBold}${basename}${reset}\n│\n`;
+    const log = [`/${brightMagentaBold}${basename}${reset}\n│\n`];
     let topLevelFiles = [];
     let fileCount = 0; // needs top level scope since topLevelFiles arent added to Tree
     const ignoreDirents = [".git", "node_modules"];
@@ -102,7 +102,7 @@ function buildTree(absolutePath, args) {
                 }
 
                 const spacer = "│  ";
-                log += `${spacer.repeat(metadata.depth)}${indentType}${metadata.isDirectory ? brightBlueBold + "/" : yellow}${dirent}${reset}\n`;
+                log.push (`${spacer.repeat(metadata.depth)}${indentType}${metadata.isDirectory ? brightBlueBold + "/" : yellow}${dirent}${reset}\n`);
 
                 if (metadata.isDirectory) {
                     writeToLog(obj[dirent][0], false);
@@ -112,21 +112,21 @@ function buildTree(absolutePath, args) {
 
         writeToLog(tree[basename][0]);
 
-        log += `│\n`;
+        log.push(`│\n`);
         topLevelFiles.forEach((file, index) => {
             if (index === topLevelFiles.length - 1) {
-                log += `└──${file}`;
+                log.push(`└──${file}`);
             }
             else {
-                log += `├──${file}`;
+                log.push(`├──${file}`);
             }
         });
-        log += `\n ${dirCount > 0 ? dirCount - 1 : 0} directories, ${fileCount} files`;
+        log.push(`\n ${dirCount > 0 ? dirCount - 1 : 0} directories, ${fileCount} files`);
 
         if (args?.output) {
             const saveFile = async () => {
                 try {
-                    await fs.writeFile(args.output, log);
+                    await fs.writeFile(args.output, log.join(""));
                     console.log(`File saved successfully!`);
                 } catch (error) {
                     console.error(`Error writing file to: ${args.output}`);
@@ -136,7 +136,7 @@ function buildTree(absolutePath, args) {
             process.exit(0);
         }
         else {
-            console.log(log);
+            console.log(log.join(""));
             process.exit(0);
         }
     });
