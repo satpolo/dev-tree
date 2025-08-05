@@ -20,7 +20,7 @@ function buildTree(absolutePath, args) {
     const brightMagentaBold = args?.output ? "" : "\x1b[95m" + "\x1b[1m";
 
     const log = [`/${brightMagentaBold}${basename}${reset}\n│\n`];
-    let topLevelFiles = [];
+    const topLevelFiles = [];
     let fileCount = 0; // needs top level scope since topLevelFiles arent added to Tree
     const ignoreDirents = [".git", "node_modules"];
     const ignoreFileExts = [];
