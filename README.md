@@ -1,6 +1,6 @@
 # dev-tree
 
-A simple, fast, and customizable command-line tool to generate a directory tree for any given path. 
+A decent cli tool to generate a directory tree for any given path. 
 - Ignores ".git" and "node_modules" by default
 
 ---
@@ -8,6 +8,7 @@ A simple, fast, and customizable command-line tool to generate a directory tree 
 
 Running `dev-tree` in a sample project will produce output like this:
 
+*output is color coded*
 ```
 /node-cli-project
 │
