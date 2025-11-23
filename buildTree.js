@@ -46,7 +46,7 @@ function buildTree(absolutePath, args) {
         let fileExt = isDirectory ? null : path.extname(name);
         if (fileExt === "") {
             // edge case for .env .gitignore files
-            file = name;
+            fileExt = name;
         }
             
         if (!args.all) {
